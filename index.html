@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0B3D91">
+  <meta name="description" content="EN. GI CAR offre soccorso stradale H24, recupero e trasporto veicoli a Canegrate, Legnano e nella provincia di Milano.">
+  <meta name="keywords" content="soccorso stradale Canegrate, carro attrezzi Legnano, recupero auto Milano, soccorso stradale H24">
+  <title>EN. GI CAR | Soccorso Stradale H24</title>
+
+  <style>
+    :root{
+      --blue:#0B3D91;
+      --blue-dark:#072A63;
+      --blue-light:#EAF2FF;
+      --yellow:#FFC107;
+      --yellow-soft:#FFE38A;
+      --white:#FFFFFF;
+      --text:#172033;
+      --muted:#667085;
+      --border:#DCE4F2;
+      --shadow:0 18px 55px rgba(7,42,99,.14);
+      --radius:24px;
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:Arial,Helvetica,sans-serif;
+      color:var(--text);
+      background:var(--white);
+      line-height:1.6;
+      overflow-x:hidden;
+    }
+    a{text-decoration:none;color:inherit}
+    .container{width:min(1160px,calc(100% - 36px));margin:auto}
+
+    header{
+      position:sticky;
+      top:0;
+      z-index:1000;
+      background:rgba(255,255,255,.95);
+      backdrop-filter:blur(15px);
+      border-bottom:1px solid rgba(11,61,145,.08);
+    }
+    .nav{
+      min-height:76px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:24px;
+    }
+    .logo{display:flex;align-items:center;gap:12px}
+    .logo-badge{
+      width:48px;height:48px;border-radius:15px;
+      background:var(--blue);color:var(--yellow);
+      display:grid;place-items:center;
+      font-weight:900;font-size:18px;
+      box-shadow:0 10px 24px rgba(11,61,145,.22)
+    }
+    .logo-text{display:flex;flex-direction:column;line-height:1.1}
+    .logo-text strong{color:var(--blue-dark);font-size:16px}
+    .logo-text small{color:var(--muted);font-size:11px;font-weight:700}
+    nav{display:flex;gap:24px}
+    nav a{font-size:14px;font-weight:800;color:#334155}
+    nav a:hover{color:var(--blue)}
+    .menu-btn{
+      display:none;border:0;background:transparent;
+      font-size:28px;color:var(--blue)
+    }
+
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;
+      min-height:50px;padding:0 24px;border-radius:15px;
+      font-weight:900;border:2px solid transparent;
+      transition:.2s ease;cursor:pointer
+    }
+    .btn:hover{transform:translateY(-2px)}
+    .btn-yellow{background:var(--yellow);color:#182235;box-shadow:0 12px 28px rgba(255,193,7,.25)}
+    .btn-blue{background:var(--blue);color:#fff}
+    .btn-white{background:#fff;color:var(--blue)}
+    .btn-outline{border-color:rgba(255,255,255,.7);color:#fff}
+    .btn-large{min-height:58px;padding:0 28px}
+
+    .hero{
+      position:relative;overflow:hidden;
+      background:
+      radial-gradient(circle at 10% 20%,rgba(255,193,7,.18),transparent 28%),
+      linear-gradient(135deg,var(--blue-dark),var(--blue));
+      color:white
+    }
+    .hero:before{
+      content:"";position:absolute;inset:0;opacity:.13;
+      background-image:
+      linear-gradient(90deg,rgba(255,255,255,.15) 1px,transparent 1px),
+      linear-gradient(rgba(255,255,255,.15) 1px,transparent 1px);
+      background-size:48px 48px;
+      mask-image:linear-gradient(to bottom,black,transparent)
+    }
+    .hero-grid{
+      position:relative;
+      display:grid;grid-template-columns:1.05fr .95fr;
+      align-items:center;gap:60px;padding:92px 0
+    }
+    .pill{
+      display:inline-flex;padding:10px 16px;border-radius:999px;
+      background:rgba(255,193,7,.14);color:#FFE68E;
+      border:1px solid rgba(255,193,7,.35);
+      font-weight:900;font-size:13px
+    }
+    h1{
+      margin-top:24px;font-size:clamp(44px,6vw,82px);
+      line-height:.98;letter-spacing:-3px;max-width:720px
+    }
+    .lead{margin-top:22px;color:rgba(255,255,255,.82);font-size:18px;max-width:650px}
+    .hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:32px}
+    .trust{display:flex;gap:18px;flex-wrap:wrap;margin-top:26px;color:#D9E8FF;font-weight:800;font-size:14px}
+
+    .hero-card{
+      padding:22px;border-radius:34px;background:rgba(255,255,255,.09);
+      border:1px solid rgba(255,255,255,.18);
+      backdrop-filter:blur(12px);box-shadow:0 30px 80px rgba(0,0,0,.22)
+    }
+    .scene{
+      height:390px;border-radius:25px;overflow:hidden;position:relative;
+      background:linear-gradient(#B9D7FF 0 58%,#F5D873 58% 62%,#2B3D5A 62% 100%)
+    }
+    .sun{position:absolute;width:95px;height:95px;border-radius:50%;background:var(--yellow);right:34px;top:34px}
+    .road{position:absolute;left:0;right:0;bottom:0;height:38%;background:#29384E}
+    .road:after{
+      content:"";position:absolute;left:0;right:0;top:48%;height:7px;
+      background:repeating-linear-gradient(90deg,#fff 0 70px,transparent 70px 120px);
+      opacity:.65
+    }
+    .truck{position:absolute;left:52px;bottom:76px;width:300px;height:125px}
+    .cabin{
+      position:absolute;left:0;bottom:22px;width:118px;height:92px;
+      background:var(--blue);border-radius:18px 30px 8px 8px
+    }
+    .cabin:before{
+      content:"";position:absolute;left:20px;top:14px;width:62px;height:33px;
+      background:#DDF0FF;border-radius:8px
+    }
+    .bed{
+      position:absolute;left:100px;bottom:37px;width:205px;height:28px;
+      background:#F4F8FC;transform:rotate(-9deg);transform-origin:left center;border-radius:8px
+    }
+    .wheel{
+      position:absolute;width:54px;height:54px;bottom:0;border-radius:50%;
+      background:#121A26;border:8px solid #40506A
+    }
+    .w1{left:28px}.w2{left:220px}
+    .light{
+      position:absolute;left:25px;bottom:112px;width:44px;height:12px;border-radius:7px;
+      background:var(--yellow);box-shadow:0 0 18px var(--yellow)
+    }
+    .car{position:absolute;right:34px;bottom:116px;width:175px;height:78px;transform:rotate(-9deg)}
+    .car-body{position:absolute;inset:20px 0 8px;background:#fff;border-radius:42px 34px 16px 16px}
+    .car-body:before{
+      content:"";position:absolute;left:45px;top:-22px;width:72px;height:38px;
+      background:#DDF0FF;border-radius:25px 25px 5px 5px;border:8px solid #fff
+    }
+    .car-wheel{
+      position:absolute;width:36px;height:36px;bottom:0;border-radius:50%;
+      background:#121A26;border:6px solid #40506A
+    }
+    .cw1{left:25px}.cw2{right:22px}
+    .availability{display:flex;justify-content:space-between;align-items:center;padding:18px 8px 2px}
+    .availability strong{font-size:32px;color:var(--yellow)}
+    .availability span{font-weight:800;color:#DCE9FF}
+
+    .quick{background:var(--yellow)}
+    .quick-grid{display:grid;grid-template-columns:repeat(4,1fr)}
+    .quick-grid div{padding:22px 14px;text-align:center;border-right:1px solid rgba(7,42,99,.15)}
+    .quick-grid div:last-child{border-right:0}
+    .quick-grid strong{display:block;color:var(--blue-dark);font-size:20px}
+    .quick-grid span{font-size:12px;font-weight:800;color:#3A465A}
+
+    section{padding:96px 0}
+    .section-heading{text-align:center;max-width:760px;margin:0 auto 50px}
+    .section-heading.left{text-align:left;margin:0}
+    .eyebrow{
+      display:inline-block;text-transform:uppercase;letter-spacing:2px;
+      color:var(--blue);font-weight:900;font-size:12px;margin-bottom:12px
+    }
+    .eyebrow.light{color:#FFE58A}
+    h2{font-size:clamp(34px,4vw,54px);line-height:1.08;letter-spacing:-1.5px;color:var(--blue-dark)}
+    .section-heading p{margin-top:16px;color:var(--muted)}
+
+    .services{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+    .card{
+      border:1px solid var(--border);border-radius:var(--radius);padding:30px 26px;
+      box-shadow:0 10px 30px rgba(7,42,99,.06);background:#fff;transition:.25s ease
+    }
+    .card:hover{transform:translateY(-8px);box-shadow:var(--shadow)}
+    .icon{
+      width:58px;height:58px;border-radius:18px;background:var(--blue-light);
+      display:grid;place-items:center;font-size:26px;margin-bottom:22px
+    }
+    .card h3{color:var(--blue-dark);font-size:18px}
+    .card p{margin-top:10px;color:var(--muted);font-size:14px}
+
+    .blue-section{background:var(--blue);color:#fff}
+    .blue-section h2{color:#fff}
+    .blue-section p{margin-top:20px;color:#DCE9FF}
+    .split{display:grid;grid-template-columns:1.1fr .9fr;gap:70px;align-items:center}
+    .checklist{list-style:none;margin-top:28px;display:grid;gap:14px}
+    .checklist li{position:relative;padding-left:34px;font-weight:800}
+    .checklist li:before{
+      content:"✓";position:absolute;left:0;width:22px;height:22px;border-radius:50%;
+      background:var(--yellow);color:var(--blue-dark);display:grid;place-items:center;font-size:12px
+    }
+    .info-box{background:#fff;color:var(--text);padding:38px;border-radius:28px;box-shadow:0 25px 60px rgba(0,0,0,.18)}
+    .info-box h3{margin-top:8px;color:var(--blue-dark);font-size:28px}
+    .info-box ol{margin:22px 0 28px 22px;display:grid;gap:12px}
+
+    .zones{display:grid;grid-template-columns:.8fr 1.2fr;gap:70px;align-items:center}
+    .tags{display:flex;flex-wrap:wrap;gap:12px}
+    .tags span{
+      padding:12px 18px;border-radius:999px;background:var(--blue-light);
+      border:1px solid #CFE0FB;color:var(--blue-dark);font-weight:900;font-size:14px
+    }
+
+    .reviews{background:#F7FAFF}
+    .review-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+    .review{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:30px;box-shadow:0 12px 34px rgba(7,42,99,.06)}
+    .stars{color:#E0A500;letter-spacing:2px;margin-bottom:18px}
+    .review p{color:#475467;font-style:italic}
+    .review strong{display:block;margin-top:20px;color:var(--blue-dark);font-size:14px}
+
+    .contact-box{
+      background:linear-gradient(135deg,var(--blue-dark),var(--blue));
+      color:#fff;border-radius:34px;padding:54px;
+      display:grid;grid-template-columns:1.2fr .8fr;gap:50px;align-items:center;
+      box-shadow:var(--shadow)
+    }
+    .contact-box h2{color:#fff}
+    .contact-box p{margin-top:16px;color:#DCE9FF}
+    .contact-list{display:grid;gap:9px;margin-top:24px;font-weight:800}
+    .contact-actions{display:grid;gap:14px}
+
+    footer{background:#061C42;color:#C8D6EC;padding:62px 0 100px}
+    .footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:50px}
+    footer h4{color:#fff;margin-bottom:14px}
+    footer a,footer span{display:block;margin-top:8px;font-size:14px}
+    footer p{margin-top:18px;max-width:420px}
+    .footer-bottom{margin-top:40px;padding-top:20px;border-top:1px solid rgba(255,255,255,.1);display:flex;justify-content:space-between;gap:20px;font-size:12px}
+    .footer-logo .logo-text strong{color:#fff}
+    .footer-logo .logo-text small{color:#9FB6D8}
+
+    .mobile-bar{display:none}
+    .reveal{opacity:0;transform:translateY(24px);transition:.7s ease}
+    .reveal.visible{opacity:1;transform:none}
+
+    @media(max-width:980px){
+      nav{
+        position:absolute;top:76px;left:18px;right:18px;
+        display:none;flex-direction:column;background:#fff;padding:24px;
+        border-radius:18px;box-shadow:var(--shadow)
+      }
+      nav.open{display:flex}
+      .menu-btn{display:block;margin-left:auto}
+      .header-call{display:none}
+      .hero-grid,.split,.zones,.contact-box{grid-template-columns:1fr}
+      .services{grid-template-columns:repeat(2,1fr)}
+      .quick-grid{grid-template-columns:repeat(2,1fr)}
+      .review-grid{grid-template-columns:1fr}
+      .footer-grid{grid-template-columns:1fr 1fr}
+    }
+
+    @media(max-width:640px){
+      .container{width:min(100% - 28px,1160px)}
+      .logo-text small{display:none}
+      .hero-grid{padding:72px 0 60px}
+      h1{font-size:44px;letter-spacing:-2px}
+      .lead{font-size:16px}
+      .hero-actions .btn{width:100%}
+      .hero-card{padding:12px}
+      .scene{height:280px}
+      .truck{transform:scale(.72);transform-origin:left bottom;left:18px}
+      .car{transform:rotate(-9deg) scale(.72);transform-origin:right bottom;right:12px}
+      section{padding:72px 0}
+      .services{grid-template-columns:1fr}
+      .info-box,.contact-box{padding:30px 24px}
+      .footer-grid{grid-template-columns:1fr}
+      .footer-bottom{flex-direction:column}
+      footer{padding-bottom:110px}
+      .mobile-bar{
+        position:fixed;left:12px;right:12px;bottom:12px;z-index:1200;
+        display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:10px;
+        border-radius:18px;background:rgba(6,28,66,.95);
+        backdrop-filter:blur(12px);box-shadow:0 16px 40px rgba(0,0,0,.3)
+      }
+      .mobile-bar a{
+        min-height:50px;display:grid;place-items:center;border-radius:12px;font-weight:900
+      }
+      .mobile-bar a:first-child{background:var(--yellow);color:var(--blue-dark)}
+      .mobile-bar a:last-child{background:#fff;color:var(--blue)}
+    }
+  </style>
+</head>
+
+<body>
+<header>
+  <div class="container nav">
+    <a class="logo" href="#home">
+      <span class="logo-badge">EG</span>
+      <span class="logo-text">
+        <strong>EN. GI CAR</strong>
+        <small>Soccorso Stradale H24</small>
+      </span>
+    </a>
+
+    <button class="menu-btn" aria-label="Apri menu">☰</button>
+
+    <nav>
+      <a href="#servizi">Servizi</a>
+      <a href="#chi-siamo">Chi siamo</a>
+      <a href="#zone">Zone</a>
+      <a href="#recensioni">Recensioni</a>
+      <a href="#contatti">Contatti</a>
+    </nav>
+
+    <a class="btn btn-yellow header-call" href="tel:+3903311085643">Chiama ora</a>
+  </div>
+</header>
+
+<main>
+  <section class="hero" id="home">
+    <div class="container hero-grid">
+      <div class="reveal">
+        <span class="pill">Disponibili 24 ore su 24 • 7 giorni su 7</span>
+        <h1>Soccorso stradale rapido e professionale.</h1>
+        <p class="lead">Interveniamo in caso di guasto, incidente o veicolo in panne a Canegrate e nelle zone limitrofe della provincia di Milano.</p>
+
+        <div class="hero-actions">
+          <a class="btn btn-yellow btn-large" href="tel:+3903311085643">📞 0331 108 5643</a>
+          <a class="btn btn-outline btn-large" href="https://wa.me/3903311085643?text=Ciao%20EN.%20GI%20CAR%2C%20ho%20bisogno%20di%20soccorso%20stradale." target="_blank">WhatsApp</a>
+        </div>
+
+        <div class="trust">
+          <span>✓ Intervento rapido</span>
+          <span>✓ Auto e moto</span>
+          <span>✓ Assistenza H24</span>
+        </div>
+      </div>
+
+      <div class="hero-card reveal">
+        <div class="scene">
+          <div class="sun"></div>
+          <div class="road"></div>
+          <div class="truck">
+            <div class="cabin"></div>
+            <div class="bed"></div>
+            <div class="wheel w1"></div>
+            <div class="wheel w2"></div>
+            <div class="light"></div>
+          </div>
+          <div class="car">
+            <div class="car-body"></div>
+            <div class="car-wheel cw1"></div>
+            <div class="car-wheel cw2"></div>
+          </div>
+        </div>
+        <div class="availability">
+          <strong>H24</strong>
+          <span>Sempre operativi</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="quick">
+    <div class="container quick-grid">
+      <div><strong>24/7</strong><span>Disponibilità continua</span></div>
+      <div><strong>Rapidi</strong><span>Interventi tempestivi</span></div>
+      <div><strong>Sicuri</strong><span>Trasporto professionale</span></div>
+      <div><strong>Locali</strong><span>Provincia di Milano</span></div>
+    </div>
+  </div>
+
+  <section id="servizi">
+    <div class="container">
+      <div class="section-heading reveal">
+        <span class="eyebrow">I nostri servizi</span>
+        <h2>Assistenza completa su strada</h2>
+        <p>Siamo pronti a intervenire giorno e notte con un servizio rapido, affidabile e professionale.</p>
+      </div>
+
+      <div class="services">
+        <article class="card reveal">
+          <div class="icon">🚨</div>
+          <h3>Soccorso stradale H24</h3>
+          <p>Assistenza immediata in caso di guasto, incidente o veicolo fermo.</p>
+        </article>
+        <article class="card reveal">
+          <div class="icon">🚗</div>
+          <h3>Recupero auto e moto</h3>
+          <p>Recuperiamo il veicolo in sicurezza e lo trasportiamo dove richiesto.</p>
+        </article>
+        <article class="card reveal">
+          <div class="icon">🚚</div>
+          <h3>Trasporto veicoli</h3>
+          <p>Trasporto professionale di auto, moto e veicoli commerciali.</p>
+        </article>
+        <article class="card reveal">
+          <div class="icon">🔧</div>
+          <h3>Guasti e incidenti</h3>
+          <p>Supporto rapido per rimozione, messa in sicurezza e assistenza.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="blue-section" id="chi-siamo">
+    <div class="container split">
+      <div class="reveal">
+        <span class="eyebrow light">Chi siamo</span>
+        <h2>Un punto di riferimento quando sei in difficoltà.</h2>
+        <p>EN. GI CAR offre un servizio di soccorso stradale disponibile in ogni momento, con serietà, attenzione e rapidità.</p>
+        <ul class="checklist">
+          <li>Disponibilità 24 ore su 24</li>
+          <li>Interventi per auto, moto e veicoli commerciali</li>
+          <li>Copertura locale e conoscenza del territorio</li>
+          <li>Contatto diretto e assistenza immediata</li>
+        </ul>
+      </div>
+
+      <div class="info-box reveal">
+        <span class="eyebrow">In caso di emergenza</span>
+        <h3>Comunicaci subito:</h3>
+        <ol>
+          <li>La tua posizione</li>
+          <li>Il tipo di veicolo</li>
+          <li>Il problema riscontrato</li>
+        </ol>
+        <a class="btn btn-yellow" href="tel:+3903311085643">Richiedi intervento</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="zone">
+    <div class="container zones">
+      <div class="section-heading left reveal">
+        <span class="eyebrow">Dove operiamo</span>
+        <h2>Canegrate e provincia di Milano</h2>
+        <p>Interveniamo nelle principali località della zona e nei comuni limitrofi.</p>
+        <div style="margin-top:28px">
+          <a class="btn btn-blue" href="https://wa.me/3903311085643?text=Ciao%2C%20vorrei%20sapere%20se%20operate%20nella%20mia%20zona." target="_blank">Verifica la tua zona</a>
+        </div>
+      </div>
+
+      <div class="tags reveal">
+        <span>Canegrate</span><span>Legnano</span><span>Busto Garolfo</span>
+        <span>Busto Arsizio</span><span>Parabiago</span><span>Nerviano</span>
+        <span>Villa Cortese</span><span>Arconate</span><span>Olcella</span>
+        <span>Dairago</span><span>Castellanza</span><span>San Giorgio su Legnano</span>
+        <span>Rescaldina</span><span>Zone limitrofe</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="reviews" id="recensioni">
+    <div class="container">
+      <div class="section-heading reveal">
+        <span class="eyebrow">Recensioni</span>
+        <h2>Cosa apprezzano i clienti</h2>
+        <p>Le recensioni presenti sono esempi da sostituire con testimonianze reali.</p>
+      </div>
+
+      <div class="review-grid">
+        <article class="review reveal">
+          <div class="stars">★★★★★</div>
+          <p>“Servizio rapido e professionale. Sono arrivati in poco tempo e hanno risolto il problema.”</p>
+          <strong>Cliente EN. GI CAR</strong>
+        </article>
+        <article class="review reveal">
+          <div class="stars">★★★★★</div>
+          <p>“Disponibili anche di notte, gentili e molto efficienti. Consigliati.”</p>
+          <strong>Cliente EN. GI CAR</strong>
+        </article>
+        <article class="review reveal">
+          <div class="stars">★★★★★</div>
+          <p>“Recupero dell’auto eseguito con attenzione e senza perdite di tempo.”</p>
+          <strong>Cliente EN. GI CAR</strong>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="contatti">
+    <div class="container">
+      <div class="contact-box reveal">
+        <div>
+          <span class="eyebrow light">Contatti</span>
+          <h2>Hai bisogno di soccorso stradale?</h2>
+          <p>Chiamaci subito oppure inviaci un messaggio su WhatsApp. Siamo disponibili H24, 7 giorni su 7.</p>
+          <div class="contact-list">
+            <a href="tel:+3903311085643">📞 0331 108 5643</a>
+            <span>📍 Canegrate e provincia di Milano</span>
+            <span>🕒 Sempre aperti</span>
+          </div>
+        </div>
+
+        <div class="contact-actions">
+          <a class="btn btn-yellow btn-large" href="tel:+3903311085643">Chiama ora</a>
+          <a class="btn btn-white btn-large" href="https://wa.me/3903311085643?text=Ciao%20EN.%20GI%20CAR%2C%20ho%20bisogno%20di%20assistenza." target="_blank">Apri WhatsApp</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container footer-grid">
+    <div>
+      <div class="logo footer-logo">
+        <span class="logo-badge">EG</span>
+        <span class="logo-text">
+          <strong>EN. GI CAR</strong>
+          <small>Soccorso Stradale H24</small>
+        </span>
+      </div>
+      <p>Assistenza rapida e professionale nella provincia di Milano.</p>
+    </div>
+
+    <div>
+      <h4>Servizi</h4>
+      <a href="#servizi">Soccorso stradale</a>
+      <a href="#servizi">Recupero veicoli</a>
+      <a href="#servizi">Trasporto auto e moto</a>
+    </div>
+
+    <div>
+      <h4>Contatti</h4>
+      <a href="tel:+3903311085643">0331 108 5643</a>
+      <span>Canegrate (MI)</span>
+      <span>P. IVA 14707770963</span>
+    </div>
+  </div>
+
+  <div class="container footer-bottom">
+    <span>© <span id="year"></span> EN. GI CAR. Tutti i diritti riservati.</span>
+    <span>Sito ottimizzato per smartphone</span>
+  </div>
+</footer>
+
+<div class="mobile-bar">
+  <a href="tel:+3903311085643">📞 Chiama</a>
+  <a href="https://wa.me/3903311085643?text=Ciao%20EN.%20GI%20CAR%2C%20ho%20bisogno%20di%20soccorso%20stradale." target="_blank">WhatsApp</a>
+</div>
+
+<script>
+  const button = document.querySelector(".menu-btn");
+  const nav = document.querySelector("nav");
+
+  button.addEventListener("click", () => {
+    nav.classList.toggle("open");
+  });
+
+  document.querySelectorAll("nav a").forEach(link => {
+    link.addEventListener("click", () => nav.classList.remove("open"));
+  });
+
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.classList.add("visible");
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {threshold:0.12});
+
+  document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
